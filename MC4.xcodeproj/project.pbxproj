@@ -17,6 +17,9 @@
 		9228393824D4DE63000CA0B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9228393624D4DE63000CA0B1 /* LaunchScreen.storyboard */; };
 		9228394324D4DE64000CA0B1 /* MC4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9228394224D4DE64000CA0B1 /* MC4Tests.swift */; };
 		9228394E24D4DE64000CA0B1 /* MC4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9228394D24D4DE64000CA0B1 /* MC4UITests.swift */; };
+		9228395C24D4DF82000CA0B1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9228395B24D4DF82000CA0B1 /* Player.swift */; };
+		9228395E24D4E081000CA0B1 /* Chips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9228395D24D4E081000CA0B1 /* Chips.swift */; };
+		9228396024D4E0B5000CA0B1 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9228395F24D4E0B5000CA0B1 /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		9228394924D4DE64000CA0B1 /* MC4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MC4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9228394D24D4DE64000CA0B1 /* MC4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC4UITests.swift; sourceTree = "<group>"; };
 		9228394F24D4DE64000CA0B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9228395B24D4DF82000CA0B1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		9228395D24D4E081000CA0B1 /* Chips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chips.swift; sourceTree = "<group>"; };
+		9228395F24D4E0B5000CA0B1 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,9 @@
 				9228392924D4DE5E000CA0B1 /* GameScene.sks */,
 				9228392B24D4DE5E000CA0B1 /* Actions.sks */,
 				9228392D24D4DE5E000CA0B1 /* GameScene.swift */,
+				9228395B24D4DF82000CA0B1 /* Player.swift */,
+				9228395D24D4E081000CA0B1 /* Chips.swift */,
+				9228395F24D4E0B5000CA0B1 /* Board.swift */,
 				9228392F24D4DE5E000CA0B1 /* GameViewController.swift */,
 				9228393124D4DE5E000CA0B1 /* Main.storyboard */,
 				9228393424D4DE63000CA0B1 /* Assets.xcassets */,
@@ -267,7 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9228395C24D4DF82000CA0B1 /* Player.swift in Sources */,
 				9228392E24D4DE5E000CA0B1 /* GameScene.swift in Sources */,
+				9228396024D4E0B5000CA0B1 /* Board.swift in Sources */,
+				9228395E24D4E081000CA0B1 /* Chips.swift in Sources */,
 				9228393024D4DE5E000CA0B1 /* GameViewController.swift in Sources */,
 				9228392824D4DE5E000CA0B1 /* AppDelegate.swift in Sources */,
 			);
