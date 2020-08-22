@@ -22,6 +22,24 @@ class MC4Tests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let board = Board()
+        
+        let msg = "Board row and column sizes do not match. Must have N x N Grid."
+        XCTAssertEqual(board.rows(), board.cols(r:0), msg)
+        
+        
+        let p1 = Player()
+        let p2 = Player()
+        print(p1)
+        print(p2)
+        
+        for i in 0...board.get_grid().count-1 {
+            for j in 0...board.get_grid()[i].count-1 {
+                board.insert_left(r: j)
+            }
+        }
+        board.print_players()
+        board.print_board()
     }
 
     func testPerformanceExample() throws {

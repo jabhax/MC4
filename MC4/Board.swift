@@ -13,6 +13,7 @@ class Board {
         
     // Board Class
     enum Direction : String {
+        case UP = "UP"
         case DOWN = "DOWN"
         case LEFT = "LEFT"
         case RIGHT = "RIGHT"
@@ -41,6 +42,10 @@ class Board {
         return self.grid[r].count
     }
     
+    func get_grid() -> [[Int]] {
+        return self.grid
+    }
+    
     func grid_at(r: Int, c: Int) -> Int {
         return self.grid[r][c]
     }
@@ -58,7 +63,21 @@ class Board {
         self.grid = Array(repeating: Array(repeating: -1, count: self.row_size! ), count: self.col_size!)
     }
     
-    func print_b() {
+    func print_players() {
+        if self.players.count == 0 {
+            print("0 Players...it's a lonely world...")
+        }
+        else if self.players.count == 1 {
+            print("Player \(1): \(self.players[0])")
+        }
+        else {
+            for p in 0...self.players.count-1 {
+                print("Player \(p+1): \(self.players[p])")
+            }
+        }
+    }
+    
+    func print_board() {
         // Prints all current Board object slots
         for r in 0...self.rows()-1 {
             var row_line = ""
@@ -80,6 +99,12 @@ class Board {
         print("Inserted at position: (row: \(r), col: \(c))")
     }
     
+    func insert_up(c: Int) {
+        let d = Direction.UP
+        let (irow, icol) = find_slot_in_col(d:d, c:c)
+        insert(d:d, r:irow, c:icol)
+    }
+
     func insert_down(c: Int) {
         let d = Direction.DOWN
         let (irow, icol) = find_slot_in_col(d:d, c:c)
@@ -98,13 +123,13 @@ class Board {
         insert(d:d, r:irow, c:icol)
     }
     
-    func check_valid_slot(r: Int, c: Int) -> Bool {
+    private func check_valid_slot(r: Int, c: Int) -> Bool {
         if r < 0 || c < 0 { return false }
         if r > self.grid.count-1 ||  c > self.grid[0].count-1 { return false }
         return true
     }
     
-    func find_slot_in_row(d: Direction, r: Int) -> (Int, Int) {
+    private func find_slot_in_row(d: Direction, r: Int) -> (Int, Int) {
         var last_available_slot = (-1, -1)
 
         if !self.check_valid_slot(r:r, c:0) {
@@ -127,20 +152,31 @@ class Board {
         return last_available_slot
     }
     
-    func find_slot_in_col(d: Direction, c: Int) -> (Int, Int) {
+    private func find_slot_in_col(d: Direction, c: Int) -> (Int, Int) {
         var last_available_slot = (-1, -1)
         if !self.check_valid_slot(r:0, c:c) { return last_available_slot }
-
-         if d == Direction.DOWN {
+        if d == Direction.DOWN {
             for i in 0...self.grid.count-1{
-                 let slot = self.grid[i][c]
-                 if slot == -1 {
-                     last_available_slot = (i, c)
-                     return last_available_slot
-                 }
-                 else { return last_available_slot }
-             }
-         }
-         return last_available_slot
-     }
+                let slot = self.grid[i][c]
+                if slot == -1 {
+                    last_available_slot = (i, c)
+                    return last_available_slot
+                }
+                else { return last_available_slot }
+            }
+        }
+        else if d == Direction.UP {
+            for i in stride(from: self.grid.count-1, to: 0, by: -1) {
+                let slot = self.grid[i][c]
+                if slot == -1 {
+                    last_available_slot = (i, c)
+                    return last_available_slot
+                }
+                else {
+                    return last_available_slot
+                }
+            }
+        }
+        return last_available_slot
+    }
 }

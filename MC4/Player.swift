@@ -9,6 +9,17 @@
 import Foundation
 import SpriteKit
 
-class Player: SKSpriteNode {
+class Player {
     // Player Class
+    private static var ID: Int = 0
+    var PID: Int
+    
+    init() {
+        Player.ID += 1
+        self.PID = Player.ID
+    }
+    
+    var description: String {
+        return "Player ID: \(self.PID)"
+    }
 }
