@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 
 class Board {
@@ -23,6 +24,8 @@ class Board {
     private let row_size: Int?
     private let col_size: Int?
     private var players = [Player]()
+    private var chips = Chips()
+    
     
     convenience init() {
         self.init(r: 7, c: 7)
@@ -58,6 +61,10 @@ class Board {
         self.players.append(p)
     }
     
+    func get_chips() -> Chips {
+        return self.chips
+    }
+    
     func clean() {
         // Cleans the current Board object by setting all slots to -1
         self.grid = Array(repeating: Array(repeating: -1, count: self.row_size! ), count: self.col_size!)
@@ -88,7 +95,7 @@ class Board {
             print("row_line \(r): \(row_line)")
         }
     }
-    
+        
     func insert(d: Direction, r: Int, c: Int)  {
         // Insert a chip in the following direction, row, and column.
         if !check_valid_slot(r:r, c:c) {
@@ -96,6 +103,10 @@ class Board {
             return
         }
         self.grid[r][c] = self.players.count
+        let x = 100 + 50*c
+        let y = 100 + 50*r
+        var loc = CGPoint(x: x, y: y)
+        self.chips.drawChip(location: loc)
         print("Inserted at position: (row: \(r), col: \(c))")
     }
     
@@ -103,6 +114,7 @@ class Board {
         let d = Direction.UP
         let (irow, icol) = find_slot_in_col(d:d, c:c)
         insert(d:d, r:irow, c:icol)
+        
     }
 
     func insert_down(c: Int) {

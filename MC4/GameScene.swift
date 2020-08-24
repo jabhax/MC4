@@ -44,6 +44,8 @@ class GameScene: SKScene {
             n.strokeColor = SKColor.green
             self.addChild(n)
         }
+        let b = Board()
+        b.get_chips().drawChip(location: pos)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
